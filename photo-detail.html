@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ფოტო დეტალი</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .photo-detail-section {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f7f3e9 0%, #fce7ef 100%);
+            padding: 2rem;
+        }
+
+        .photo-detail-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 2rem;
+            padding: 0.7rem 1.5rem;
+            background: linear-gradient(135deg, #ff6b9d, #c06c84);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            transform: translateX(-5px);
+            box-shadow: 0 8px 20px rgba(255, 107, 157, 0.3);
+        }
+
+        .photo-banner {
+            width: 100%;
+            max-height: 600px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .photo-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .photo-text-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(255, 107, 157, 0.15);
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .photo-text-section h1 {
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            color: #ff6b9d;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .photo-text-section p {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 2;
+            margin-bottom: 1.5rem;
+        }
+
+        .photo-text-section .date {
+            color: #c06c84;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid #fce7ef;
+        }
+
+        .gallery-nav {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            justify-content: center;
+        }
+
+        .nav-btn {
+            padding: 0.8rem 1.5rem;
+            background: #ff6b9d;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 107, 157, 0.3);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        @media (max-width: 768px) {
+            .photo-detail-section {
+                padding: 1rem;
+            }
+
+            .photo-text-section {
+                padding: 1.5rem;
+            }
+
+            .photo-banner {
+                max-height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="photo-detail-section">
+        <div class="photo-detail-container">
+            <a href="anniversary.html" class="back-btn">← უკან</a>
+
+            <div class="photo-banner">
+                <img id="detailPhoto" src="assets/photo1.jpg" alt="ფოტო" class="photo-detail-image">
+            </div>
+
+            <div class="photo-text-section">
+                <h1 id="photoTitle">ჩვენი პირველი შეხვედრა</h1>
+                <p id="photoDescription">
+                    ამაზე ბევრჯერ ვილაპარაკეთ,ბევრჯერ გავიხსენეთ ის გრძნობები რასაც ორივე ვგრძნობდით.ვდუმდი,ხმას ვერ ვიღებდი და ვფიქრობდი ესეთი ლამაზი გოგო ჩემი შეყვარებული? გასაცნობად რო მოვდიოდი კი იცი როგორც ვიყავი.გული ძააან მიცემდა, ვნერვიულობდი რადგან იმ გოგოს გასაცნობად მივდიოდი ვინც ჩემს გულში უცებ არსაიდან შემოიჭრა.ნერვიულობასთნ ერთად უბედნიერესი ვიყავი როცა გავიფიქრებდი მომავალში ჩვენ ერთად? ერთად მუდამ უსასრულოდ...! ახლაც მახსოვს როგორ შემომხედე და გამიღიმე. 
+                    
+                    მსოფლიოში ყველაზე ლამაზი და საუკეთესო შეყვარებული მე მყავს და ამით ძალიაააან ბედნიერი ვარ ჩემო ცხოვრება❤️
+                </p>
+                <div class="date" id="photoDate">9 ოქტომბერი, 2025</div>
+
+                <div class="gallery-nav">
+                    <button class="nav-btn" id="prevBtn" onclick="previousPhoto()">← წინა</button>
+                    <span id="photoCounter" style="align-self: center; color: #667; font-weight: 600;">1 / 6</span>
+                    <button class="nav-btn" id="nextBtn" onclick="nextPhoto()">შემდეგი →</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const photos = [
+            {
+                src: 'assets/photo1.jpg',
+                title: 'ჩვენი პირველი შეხვედრა',
+                description: 'ამაზე ბევრჯერ ვილაპარაკეთ,ბევრჯერ გავიხსენეთ ის გრძნობები რასაც ორივე ვგრძნობდით.ვდუმდი,ხმას ვერ ვიღებდი და ვფიქრობდი ესეთი ლამაზი გოგო ჩემი შეყვარებული? გასაცნობად რო მოვდიოდი კი იცი როგორც ვიყავი.გული ძააან მიცემდა, ვნერვიულობდი რადგან იმ გოგოს გასაცნობად მივდიოდი ვინც ჩემს გულში უცებ არსაიდან შემოიჭრა.ნერვიულობასთნ ერთად უბედნიერესი ვიყავი როცა გავიფიქრებდი მომავალში ჩვენ ერთად? ერთად მუდამ უსასრულოდ... ახლაც მახსოვს როგორ შემომხედე და გამიღიმე. მსოფლიოში ყველაზე ლამაზი და საუკეთესო შეყვარებული მე მყავს და ამით ძალიაააან ბედნიერი ვარ ჩემო ცხოვრება❤️',
+                date: '9 ოქტომბერი, 2025'
+            },
+            {
+                src: 'assets/photo2.jpg',
+                title: 'რატო მიყვარხარ?',
+                description: 'რამოდენიმეჯერ გიკითხავს გული თუ რატო მიყვარხარ.ამაზე საუბარი რო დავიწყო ვერ დავასრულებ,სიტყვებიც არ მეყოფა ამ ყველაფრის ასაღწერად მაგრამ ვეცდები მცირედ ავხსნა.პირველ რიგში მიყვარხარ იმიტომ,რომ კეთილი,ჭკვიანი,ყველაზე ლამაზი და ერთგული ხარ,ზოგჯერ ჯიუტი და მაიმუნიც. მეორე ის რომ ერთნაირები ვართ, ყველაფერში ემთხვევა ჩვენი აზრები და გემოვნება.მგონია რო 1 წელი კი არა, ბავშვობიდან გიცნობ და იქედან მოყოლებული მიყვარხარ იმდენად დიდ სიყვარულს ვატარებთ ერთმანეთის მიმართ ჩემო გულო. მიყვარხარ, რატო? მიყვარხარ და იმიტო, მიყვარხარ და მეყვარები მუდამ❤️',
+                date: '2 მარტი, 2026'
+            },
+            {
+                src: 'assets/photo3.jpg',
+                description: 'შენ ჩემთვის უბრალო ადამიანი არ ხარ… შენ ხარ ის, ვინც ყოველდღე მაძლევს მიზეზს, რომ გავიღიმო. შენთან ყველაფერი უფრო ლამაზია❤️',
+                date: '16 აპრილი, 2026'
+            },
+            {
+                src: 'assets/photo4.jpg',
+                title: 'ყოველთვის გახსოვდეს...',
+                description: 'ყოველთვის გახსოვდეს რაც არ უნდა მოხდეს, მე შენს გვერდით ვიქნები. შენი ღიმილი ჩემთვის ძალიან ბევრს ნიშნავს და მინდა, რომ ყოველთვის ბედნიერი იყო. როცა გიჭირს, არ დაგავიწყდეს, რომ შეგიძლია ჩემზე დაიყრდნო, რადგან შენთვის ყველაფერს გავაკეთებ. შენ ხარ ადამიანი, ვინც ჩემს დღეებს აზრს აძლევს და მინდა, რომ ეს არასოდეს დაგავიწყდეს ეს❤️',
+                date: '24 აგვისტო, 2025'
+            },
+            {
+                src: 'assets/photo5.jpg',
+                description: 'მიყვარხარ… იმაზე მეტად, ვიდრე სიტყვებით შეიძლება ითქვას. შენთან ყოფნა ჩემთვის განსაკუთრებულია და ყოველდღე მაბედნიერებ. შენ ხარ ადამიანი, ვინც ჩემს დღეებს აზრს აძლევს.მინდა იცოდე, რომ ყოველთვის შენს გვერდით ვიქნები — როგორც კარგ, ისე რთულ მომენტებში. შენ ხარ ჩემი სიმშვიდე და ყველაზე ძვირფასი გრძნობა. ძალიან მიყვარხარ ❤️',
+                date: '2 ნოემბერი, 2025'
+            },
+            {
+                src: 'assets/photo6.jpg',
+                description: 'მიყვარს შენი თალები,შენი ღიმილი,შენი ხმა,შენი სიცილი,შენი გული,შენი სული,შენი თმა, შენი სახე და მიყვარს შენში ყველაფერი ჩემო პრინცესა❤️',
+                date: '2 ნოემბერი, 2025'
+            }
+        ];
+
+        let currentPhotoIndex = 0;
+
+        function getPhotoIndexFromURL() {
+            const params = new URLSearchParams(window.location.search);
+            return parseInt(params.get('id')) || 0;
+        }
+
+        function displayPhoto(index) {
+            const photo = photos[index];
+            document.getElementById('detailPhoto').src = photo.src;
+            document.getElementById('photoTitle').textContent = photo.title;
+            document.getElementById('photoDescription').textContent = photo.description;
+            document.getElementById('photoDate').textContent = photo.date;
+            document.getElementById('photoCounter').textContent = (index + 1) + ' / ' + photos.length;
+
+            // Update button states
+            document.getElementById('prevBtn').disabled = index === 0;
+            document.getElementById('nextBtn').disabled = index === photos.length - 1;
+
+            currentPhotoIndex = index;
+        }
+
+        function nextPhoto() {
+            if (currentPhotoIndex < photos.length - 1) {
+                displayPhoto(currentPhotoIndex + 1);
+            }
+        }
+
+        function previousPhoto() {
+            if (currentPhotoIndex > 0) {
+                displayPhoto(currentPhotoIndex - 1);
+            }
+        }
+
+        // Initialize on page load
+        window.addEventListener('load', () => {
+            const index = getPhotoIndexFromURL();
+            displayPhoto(index);
+        });
+    </script>
+</body>
+</html>

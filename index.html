@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ჩვენი სიყვარული
+
+    </title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #ff6b9d;
+            --secondary-color: #c06c84;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #2d2d2d;
+            overflow-x: hidden;
+        }
+
+        /* Landing Page */
+        .landing {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .video-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 2;
+        }
+
+        .landing-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            color: white;
+            animation: fadeIn 1s ease-out;
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .landing-content h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            animation: slideDown 0.8s ease-out 0.2s both;
+            line-height: 1.2;
+        }
+
+        .landing-content p {
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            margin-bottom: 3rem;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.8s ease-out 0.4s both;
+            line-height: 1.8;
+        }
+
+        .enter-btn {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 8px 25px rgba(255, 107, 157, 0.3);
+            animation: scaleIn 0.8s ease-out 0.6s both;
+            letter-spacing: 1px;
+        }
+
+        .enter-btn:hover {
+            transform: translateY(-4px) scale(1.08);
+            box-shadow: 0 16px 40px rgba(255, 107, 157, 0.5);
+        }
+
+        .enter-btn:active {
+            transform: translateY(-2px) scale(1.04);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .landing-content h1 {
+                margin-bottom: 1rem;
+            }
+
+            .landing-content p {
+                font-size: 1.2rem;
+                margin-bottom: 2rem;
+            }
+
+            .enter-btn {
+                padding: 0.9rem 2.5rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="landing">
+        <video autoplay muted loop playsinline class="video-bg" poster="assets/image.png">
+            <source src="assets/video.mp4" type="video/mp4">
+            <source src="assets/video.webm" type="video/webm">
+        </video>
+        <div class="video-overlay"></div>
+        <div class="landing-content">
+            <h1>ჩვენი სიყვარული</h1>
+            <p>სიყვარულის ერთი წელი
+
+            </p>
+            <a href="anniversary.html" class="enter-btn">შემოდი →</a>
+        </div>
+    </section>
+</body>
+</html>

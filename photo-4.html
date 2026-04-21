@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>განსაკუთრებული მომენტები</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .photo-detail-section {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f7f3e9 0%, #fce7ef 100%);
+            padding: 2rem;
+        }
+
+        .photo-detail-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 2rem;
+            padding: 0.7rem 1.5rem;
+            background: linear-gradient(135deg, #ff6b9d, #c06c84);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            transform: translateX(-5px);
+            box-shadow: 0 8px 20px rgba(255, 107, 157, 0.3);
+        }
+
+        .photo-banner {
+            width: 100%;
+            max-height: 600px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .photo-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .photo-text-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(255, 107, 157, 0.15);
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .photo-text-section h1 {
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            color: #ff6b9d;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .photo-text-section p {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 2;
+            margin-bottom: 1.5rem;
+        }
+
+        .photo-text-section .date {
+            color: #c06c84;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid #fce7ef;
+        }
+
+        .gallery-nav {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            justify-content: center;
+        }
+
+        .nav-btn {
+            padding: 0.8rem 1.5rem;
+            background: #ff6b9d;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 107, 157, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .photo-detail-section {
+                padding: 1rem;
+            }
+
+            .photo-text-section {
+                padding: 1.5rem;
+            }
+
+            .photo-banner {
+                max-height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="photo-detail-section">
+        <div class="photo-detail-container">
+            <a href="anniversary.html" class="back-btn">← უკან</a>
+
+            <div class="photo-banner">
+                <img src="assets/photo4.svg" alt="განსაკუთრებული მომენტები">
+            </div>
+
+            <div class="photo-text-section">
+                <h1>განსაკუთრებული მომენტები</h1>
+                <p>ცხოვრება დროის წვეთი არ არის, არამედ სიმბოლოა. ყოველი მომენტი თქვენთან - განსაკუთრებული, უცდელი და ყვავილოვანი. მე ღმერთს მადლობებ ამ მომენტებზე.</p>
+                <p>ყოველი ჯერი, რომ თქვენ დიახ უთხარი, ჩემი გული ისევ აჯერებს. განსაკუთრებული მომენტი არ არის უბრალო ფოტო - ეს არის შენი ყოფნა ჩემი ღირებულების ცხოვნებაში.</p>
+                <div class="date">25 სექტემბერი, 2025</div>
+
+                <div class="gallery-nav">
+                    <a href="photo-3.html" class="nav-btn">← წინა</a>
+                    <span style="align-self: center; color: #666; font-weight: 600;">4 / 6</span>
+                    <a href="photo-5.html" class="nav-btn">შემდეგი →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ჩვენ - ჩვენი სახლი</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="we-header">
+        <a href="anniversary.html" class="back-link">⟵ უკან დაბრუნება</a>
+        <h1 class="we-title">ჩვენ</h1>
+    </header>
+
+    <main>
+        <section class="heart-stage">
+            <div class="heart-grid">
+                
+
+                <div class="heart-spacer"></div>
+                <div class="heart-item"><img src="assets/photo7.jpg" alt="Photo 2"></div>
+                <div class="heart-spacer"></div>
+                <div class="heart-item"><img src="assets/photo8.jpg" alt="Photo 3"></div>
+                <div class="heart-spacer"></div>
+
+                <div class="heart-item"><img src="assets/photo9.jpg" alt="Photo 4"></div>
+                <div class="heart-spacer"></div>
+                <div class="heart-item"><img src="assets/photo10.jpg" alt="Photo 5"></div>
+                <div class="heart-spacer"></div>
+                <div class="heart-item"><img src="assets/photo11.jpg" alt="Photo 6"></div>
+
+                <div class="heart-spacer"></div>
+                <div class="heart-item"><img src="assets/photo1.jpg" alt="Photo 7"></div>
+                <div class="heart-spacer"></div>
+                <div class="heart-item"><img src="assets/photo2.jpg" alt="Photo 8"></div>
+                <div class="heart-spacer"></div>
+
+                
+            </div>
+        </section>
+
+        <audio id="music-player" controls>
+    <source src="assets/music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const player = document.getElementById('music-player');
+
+        // ვამოწმებთ, არის თუ არა ლინკში play=1
+        if (urlParams.get('play') === '1') {
+            // მცირე დაყოვნება ხანდახან ეხმარება ბრაუზერს უკეთ აღქმაში
+            setTimeout(() => {
+                player.play().catch(error => {
+                    console.log("ავტომატური ჩართვა დაიბლოკა ბრაუზერის მიერ. საჭიროა გვერდზე სადმე დაწკაპუნება.");
+                });
+            }, 100);
+        }
+
+        // Envelope interaction
+        const envelope = document.getElementById('envelope');
+        const letter = document.getElementById('letter');
+
+        envelope.addEventListener('click', () => {
+            envelope.classList.toggle('open');
+        });
+    });
+</script>
+    <section class="video-section">
+        <h2>ჩვენი მოგონებები ვიდეოებში</h2>
+        <div class="video-gallery">
+            <div class="video-item">
+                <video autoplay muted loop playsinline class="video-card">
+                    <source src="assets/video.mp4" type="video/mp4">
+                    <source src="assets/video.webm" type="video/webm">
+                </video>
+                
+            </div>
+            <div class="video-item">
+                <video autoplay muted loop playsinline class="video-card">
+                    <source src="assets/video2.mp4" type="video/mp4">
+                    <source src="assets/video2.webm" type="video/webm">
+                </video>
+                
+            </div>
+            <div class="video-item">
+                <video autoplay muted loop playsinline class="video-card">
+                    <source src="assets/video3.mp4" type="video/mp4">
+                    <source src="assets/video3.webm" type="video/webm">
+                </video>
+              
+            </div>
+            <div class="video-item">
+                <video autoplay muted loop playsinline class="video-card">
+                    <source src="assets/video4.mp4" type="video/mp4">
+                    <source src="assets/video4.mp4" type="video/webm">
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Envelope Section -->
+    <section class="envelope-section">
+        <h2>მიყვარხარ!❤️</h2>
+        <div class="envelope-container">
+            <div class="envelope" id="envelope">
+                <div class="envelope-flap"></div>
+                <div class="envelope-body">
+                    <div class="letter" id="letter">
+                        <div class="letter-content">
+                            <h3>ჩემო ცხოვრება</h3>
+                            <p>
+                                 შენ ხარ ჩემი ყველაზე დიდი ბედნიერება.
+                                ყოველი წამი შენთან არის საჩუქარი. მიყვარხარ უფრო ვიდრე სიტყვებით შეიძლება გადმოცემა.❤️
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    </main>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
