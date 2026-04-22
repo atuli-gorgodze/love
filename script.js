@@ -107,27 +107,33 @@ const playMusicBtn = document.getElementById('play-music');
 const musicPlayer = document.getElementById('music-player');
 
 if (playMusicBtn && musicPlayer && musicLink) {
+
     playMusicBtn.addEventListener('click', async () => {
         const link = musicLink.value.trim();
-
         if (!link) return;
 
         try {
-            musicPlayer.pause();        // stop previous audio
-            musicPlayer.src = link;
+            // HARD reset (important for iOS Safari)
+            musicPlayer.pause();
+            musicPlayer.removeAttribute('src');
             musicPlayer.load();
 
-            // small delay helps mobile browsers register source change
-            setTimeout(async () => {
-                try {
-                    await musicPlayer.play();
-                } catch (err) {
-                    console.warn('Play failed:', err);
-                }
-            }, 50);
+            musicPlayer.src = link;
+            musicPlayer.preload = "auto";
 
-        } catch (error) {
-            console.warn('Error setting music:', error);
+            const playPromise = musicPlayer.play();
+
+            if (playPromise !== undefined) {
+                await playPromise;
+            }
+
+        } catch (err) {
+            console.warn("iPhone blocked playback:", err);
+
+            // fallback (iOS-safe retry)
+            setTimeout(() => {
+                musicPlayer.play().catch(() => {});
+            }, 200);
         }
     });
 }
