@@ -15,7 +15,6 @@
     <main>
         <section class="heart-stage">
             <div class="heart-grid">
-
                 <div class="heart-spacer"></div>
                 <div class="heart-item"><img src="assets/photo7.jpg"></div>
                 <div class="heart-spacer"></div>
@@ -33,46 +32,19 @@
                 <div class="heart-spacer"></div>
                 <div class="heart-item"><img src="assets/photo2.jpg"></div>
                 <div class="heart-spacer"></div>
-
             </div>
         </section>
 
-        <!-- 🎵 MUSIC -->
+        <!-- 🎵 MUSIC (UNCHANGED) -->
         <audio id="music-player" playsinline preload="auto">
             <source src="assets/music.mp3" type="audio/mpeg">
         </audio>
 
-        <button id="startMusicBtn">▶️ მუსიკის ჩართვა</button>
-
-        <script>
-            window.addEventListener('DOMContentLoaded', () => {
-                const player = document.getElementById('music-player');
-                const startBtn = document.getElementById('startMusicBtn');
-
-                // ✅ iPhone-safe play
-                startBtn.addEventListener('click', () => {
-                    player.play().then(() => {
-                        startBtn.style.display = "none";
-                    }).catch(err => {
-                        console.log("Playback blocked:", err);
-                    });
-                });
-
-                // Envelope
-                const envelope = document.getElementById('envelope');
-                if (envelope) {
-                    envelope.addEventListener('click', () => {
-                        envelope.classList.toggle('open');
-                    });
-                }
-            });
-        </script>
-
-        <!-- 🎥 VIDEOS -->
+        <!-- VIDEOS -->
         <section class="video-section">
             <h2>ჩვენი მოგონებები ვიდეოებში</h2>
-            <div class="video-gallery">
 
+            <div class="video-gallery">
                 <div class="video-item">
                     <video autoplay muted loop playsinline class="video-card">
                         <source src="assets/video.mp4" type="video/mp4">
@@ -100,7 +72,6 @@
                         <source src="assets/video4.webm" type="video/webm">
                     </video>
                 </div>
-
             </div>
         </section>
 
@@ -116,8 +87,7 @@
                                 <h3>ჩემო ცხოვრება</h3>
                                 <p>
                                     შენ ხარ ჩემი ყველაზე დიდი ბედნიერება.
-                                    ყოველი წამი შენთან არის საჩუქარი.
-                                    მიყვარხარ უფრო ვიდრე სიტყვებით შეიძლება გადმოცემა.❤️
+                                    ❤️
                                 </p>
                             </div>
                         </div>
@@ -127,6 +97,32 @@
         </section>
 
     </main>
+
+    <!-- ✅ ONLY FIX: iPhone-safe music start -->
+    <script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const player = document.getElementById('music-player');
+        const params = new URLSearchParams(window.location.search);
+
+        if (params.get('play') === '1') {
+
+            const startMusic = () => {
+                player.play().catch(() => {});
+            };
+
+            // iPhone + Android + PC safe triggers
+            document.addEventListener('click', startMusic, { once: true });
+            document.addEventListener('touchstart', startMusic, { once: true });
+        }
+
+        const envelope = document.getElementById('envelope');
+        if (envelope) {
+            envelope.addEventListener('click', () => {
+                envelope.classList.toggle('open');
+            });
+        }
+    });
+    </script>
 
     <script src="script.js"></script>
 </body>

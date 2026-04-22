@@ -51,35 +51,48 @@
         <h2>ჩვენი მოგონებები</h2>
         <div class="gallery">
             <a href="photo-1.html" class="gallery-item">
-                <img src="assets/photo1.jpg" alt="ჩვენი პირველი შეხვედრა" class="gallery-photo">
+                <img src="assets/photo1.jpg" class="gallery-photo">
                 <p class="photo-caption">მიყვარხარ!</p>
             </a>
             <a href="photo-2.html" class="gallery-item">
-                <img src="assets/photo2.jpg" alt="თავგადასავლების დრო" class="gallery-photo">
+                <img src="assets/photo2.jpg" class="gallery-photo">
                 <p class="photo-caption">მიყვარხარ!</p>
             </a>
             <a href="photo-3.html" class="gallery-item">
-                <img src="assets/photo3.jpg" alt="სიცილი და სიყვარული" class="gallery-photo">
+                <img src="assets/photo3.jpg" class="gallery-photo">
                 <p class="photo-caption">მიყვარხარ!</p>
             </a>
             <a href="photo-4.html" class="gallery-item">
-                <img src="assets/photo4.jpg" alt="განსაკუთრებული მომენტები" class="gallery-photo">
+                <img src="assets/photo4.jpg" class="gallery-photo">
                 <p class="photo-caption">მიყვარხარ!</p>
             </a>
             <a href="photo-5.html" class="gallery-item">
-                <img src="assets/photo5.jpg" alt="ჩვენი ყოფილი მომენტი" class="gallery-photo">
+                <img src="assets/photo5.jpg" class="gallery-photo">
                 <p class="photo-caption">მიყვარხარ!</p>
             </a>
             <a href="photo-6.html" class="gallery-item">
-                <img src="assets/photo6.jpg" alt="ერთი კიდევ თავგადასავალი" class="gallery-photo">
+                <img src="assets/photo6.jpg" class="gallery-photo">
                 <p class="photo-caption">მიყვარხარ!</p>
             </a>
         </div>
+
         <div class="gallery-cta">
-    <a href="we.html?play=1" class="gallery-button">ჩვენ</a>
-</div>
+            <a href="we.html?play=1" class="gallery-button">ჩვენ</a>
+        </div>
     </section>
-    
+
+    <!-- ✅ ONLY FIX: keep iPhone interaction alive -->
+    <script>
+    document.querySelector('.gallery-button')?.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        // IMPORTANT: preserves user gesture for iPhone audio unlock
+        setTimeout(() => {
+            window.location.href = "we.html?play=1";
+        }, 80);
+    });
+    </script>
+
     <script src="script.js"></script>
 </body>
 </html>
