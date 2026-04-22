@@ -107,14 +107,27 @@ const playMusicBtn = document.getElementById('play-music');
 const musicPlayer = document.getElementById('music-player');
 
 if (playMusicBtn && musicPlayer && musicLink) {
-    playMusicBtn.addEventListener('click', () => {
+    playMusicBtn.addEventListener('click', async () => {
         const link = musicLink.value.trim();
-        if (link) {
+
+        if (!link) return;
+
+        try {
+            musicPlayer.pause();        // stop previous audio
             musicPlayer.src = link;
             musicPlayer.load();
-            musicPlayer.play().catch((error) => {
-                console.warn('Music play blocked:', error);
-            });
+
+            // small delay helps mobile browsers register source change
+            setTimeout(async () => {
+                try {
+                    await musicPlayer.play();
+                } catch (err) {
+                    console.warn('Play failed:', err);
+                }
+            }, 50);
+
+        } catch (error) {
+            console.warn('Error setting music:', error);
         }
     });
 }
@@ -124,5 +137,4 @@ if (heartVideo) {
     heartVideo.addEventListener('pause', updateMusicStatus);
     updateMusicStatus();
 }
-
 
